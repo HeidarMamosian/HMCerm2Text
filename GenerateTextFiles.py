@@ -7,8 +7,14 @@ from os.path import isfile, join
 import glob
 import string
 
-parser=argparse.ArgumentParser()
 
+# You can set prefixVar to add it before all generated files
+# You can set postfixVar to add it after all generated files
+
+prefixVar='prefix 2018'
+postfixVar='sss'
+
+parser=argparse.ArgumentParser()
 parser.add_argument('--f', help='Specify the folder containing the cermine files.')
 parser.add_argument('--out', help='Specify the output folder.')
 
@@ -88,7 +94,7 @@ for i,file in enumerate(inputfiles):
     outfilename=outfilename[:200]
 
     oldname = os.path.basename(filename).split(".")[0]
-    outputfilepathname= f'{args.out}\{oldname}.txt'
+    outputfilepathname= f'{args.out}\{prefixVar}{oldname}{postfixVar}.txt'
    
     outfile = open(outputfilepathname, mode="w",encoding="UTF-8")
     for sec in content_list:
